@@ -1,22 +1,10 @@
 <?php 
 include "dbcon.php";
+session_start();
 ?>
-<!doctype html>
-<html lang="en">
-
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-  <title>Hello, world!</title>
-</head>
-
-<body>
-  <div class="container">
+<?php include 'includes/header.php';?>
+  <div class="container mt-4">
+  <?php include("message.php"); ?>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -51,9 +39,11 @@ include "dbcon.php";
                       <td><?php echo $student['phone'] ?></td>
                       <td><?php echo $student['course'] ?></td>
                       <td>
-                      <a href=""class="btn btn-info btn-sm">View</a>
-                        <a href=""class="btn btn-success btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                      <a href="student-view.php?id=<?php echo $student['id']?>"class="btn btn-info btn-sm">View</a>
+                        <a href="student-edit.php?id=<?php echo $student['id']?>"class="btn btn-success btn-sm">Edit</a>
+                       <form action="code.php" method="post" class="d-inline">
+                       <button type="submit" name="delete" class="btn btn-danger" value="<?php echo $student['id'] ?>">Delete</button>
+                       </form>
                       </td>
                       
                     </tr>
@@ -76,9 +66,4 @@ include "dbcon.php";
   </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>
+  <?php include "includes/footer.php";?>
